@@ -10,19 +10,15 @@ import { AdministradorModule } from './administrador/administrador.module';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
-import { OrientadoresComponent } from "./administrador/orientadores/orientadores.component";
+
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'home', component: HomeComponent,
-    children: [
-      {
-        path: 'admon/orientadores',
-        component: OrientadoresComponent
-      }
+    path: 'home', component: HomeComponent, children: [
+      { path: 'admon', loadChildren: './administrador/administrador.module#AdministradorModule' }
     ]
   }
 ];
