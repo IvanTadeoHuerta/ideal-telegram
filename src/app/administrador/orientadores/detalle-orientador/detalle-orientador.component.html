@@ -1,11 +1,7 @@
 <div id="basic-form" class="section">
   <div class="row">
     <div class="col s12 m12 l12 xl12">
-        <a class="btn indigo darken-4 waves-effect  waves-light" 
-          data-position="bottom" 
-          data-delay="50" 
-          [routerLink]="['/home/admon/orientadores']"
-        >
+      <a class="btn indigo darken-4 waves-effect  waves-light" data-position="bottom" data-delay="50" [routerLink]="['/home/admon/orientadores']">
         <i class="material-icons left">&#xE314;</i>
         Ver orientadores
       </a>
@@ -15,8 +11,8 @@
     <div class="col s12 m12 l12 xl12">
       <div class="card-panel">
         <h4 class="header2 right">Nuevo orientador</h4>
-        <div class="row">
-          <form class="col s12 m12 l12 xl12">
+        <div class="row">     
+          <form [formGroup]="formOrientador" class="col s12 m12 l12 xl12"  (ngSubmit)="enviarFormulario(orientador)">
             <div class="row">
               <div class="col s12 m12 l12 xl12">
                 <div class="row valign-wrapper">
@@ -24,30 +20,45 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSODALYDYo2dqN0DG_kPNi2X7EAy1K8SpRRZQWkNv9alC62IHggOw" class="circle responsive-img">
                   </div>
                   <div class="input-field col s12 m6 l6 xl6">
-                    <input id="nombre" type="text">
+                    <input id="nombre" type="text" formControlName="nombre" [(ngModel)]="orientador.nombre">
                     <label for="nombre" class="">Nombre</label>
+                    <div *ngIf="formOrientador.controls.nombre.errors?.required && (formOrientador.controls.nombre?.touched || submitted)" class="error">
+                        El nombre es requerido
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12 m6 l6 xl6">
-                <input id="apellidop" type="text">
+                <input id="apellidop" type="text" formControlName="apellidop"  [(ngModel)]="orientador.apellidoPaterno" >
                 <label for="apellidop" class="">Apellido Paterno</label>
+                <div *ngIf="formOrientador.controls.apellidop.errors?.required && (formOrientador.controls.apellidop?.touched || submitted)" class="error">
+                  El apellido es requerido
+                </div>
               </div>
               <div class="input-field col s12 m6 l6 xl6">
-                <input id="apellidom" type="text">
+                <input id="apellidom" type="text" formControlName="apellidom"  [(ngModel)]="orientador.apellidoMaterno">
                 <label for="apellidom">Apellido Materno</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12 m6 l6 xl6">
-                <input id="email" type="email">
+                <input id="email" type="email"   formControlName="email" [(ngModel)]="orientador.email">
                 <label for="email" class="">Correo electronico</label>
+                <div *ngIf="formOrientador.controls.email.errors?.required && (formOrientador.controls.email?.touched || submitted)" class="error">
+                  El email es requerido
+                </div>
+                <div *ngIf="formOrientador.controls.email.errors?.pattern" class="error">
+                  El email no es valido
+                </div>
               </div>
               <div class="input-field col s12 m6 l6 xl6">
-                <input id="telefono" type="text">
+                <input id="telefono" type="text"  formControlName="telefono" [(ngModel)]="orientador.telefono">
                 <label for="telefono">Telefono</label>
+                <div *ngIf="formOrientador.controls.telefono.errors?.required && (formOrientador.controls.telefono?.touched || submitted)" class="error">
+                  El número de telefono es requerido
+                </div>
               </div>
             </div>
             <div class="row">
@@ -63,7 +74,7 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="observaciones" class="materialize-textarea"></textarea>
+                <textarea id="observaciones" class="materialize-textarea"  formControlName="observaciones" [(ngModel)]="orientador.observaciones"></textarea>
                 <label for="observaciones">Observaciones</label>
               </div>
               <div class="row">
@@ -79,3 +90,4 @@
       </div>
     </div>
   </div>
+</div>
