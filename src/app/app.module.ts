@@ -10,7 +10,9 @@ import { AdministradorModule } from './administrador/administrador.module';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -41,12 +43,19 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     AdministradorModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor,
+        multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
