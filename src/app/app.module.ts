@@ -51,10 +51,9 @@ export const firebaseConfig = {
   ],
   providers: [
     {
-        provide: HTTP_INTERCEPTORS,
-        useClass: TokenInterceptor,
-        multi: true
-  }
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true}
   ],
   bootstrap: [AppComponent]
 })
