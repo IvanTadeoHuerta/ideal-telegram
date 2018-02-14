@@ -1,0 +1,43 @@
+<div id="basic-form" class="section">
+    <div class="row">
+        <div class="col s12 m12 l12 xl12">
+            <a class="btn indigo darken-4 waves-effect  waves-light" data-position="bottom" data-delay="50" [routerLink]="['/home/admon/ciclos']">
+          <i class="material-icons left">&#xE314;</i>
+          Ver ciclos
+        </a>
+        </div>
+    </div>
+    <div class="card-panel">
+        <h4 class="header2 right">Nuevo ciclo escolar</h4>
+
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">
+
+                <div class="input-field  col s12 m6 l6 xl6">
+                    <input id="fecha_inicio" type="text" class="datepicker">
+                    <label for="fecha_inicio">Fecha inicio</label>
+                </div>
+                <div class="input-field  col s12 m6 l6 xl6">
+                    <input id="fecha_fin" type="text" class="datepicker">
+                    <label for="fecha_fin">Fecha fin</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">
+                <div class="input-field col s12 m12 l12 xl12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Descripción</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <button class="btn indigo darken-4 waves-effect waves-light right" type="submit" name="action">Crear
+                      <i class="mdi-content-send right"></i>
+                    </button>
+            </div>
+        </div>
+    </div>
+</div>
