@@ -9,35 +9,42 @@
     </div>
     <div class="card-panel">
         <h4 class="header2 right">Nuevo ciclo escolar</h4>
+        <form [formGroup]="formCiclo" (ngSubmit)="enviarFormulario(ciclo)">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
 
-        <div class="row">
-            <div class="col s12 m12 l12 xl12">
-
-                <div class="input-field  col s12 m6 l6 xl6">
-                    <input id="fecha_inicio" type="text" class="datepicker">
-                    <label for="fecha_inicio">Fecha inicio</label>
-                </div>
-                <div class="input-field  col s12 m6 l6 xl6">
-                    <input id="fecha_fin" type="text" class="datepicker">
-                    <label for="fecha_fin">Fecha fin</label>
+                    <div class="input-field  col s12 m6 l6 xl6">
+                        <input id="fecha_inicio" type="text" materialize="pickadate" formControlName="fecha_inicio" [(ngModel)]="ciclo.fecha_inicio">
+                        <label for="fecha_inicio">Fecha inicio</label>
+                        <div *ngIf="formCiclo.controls.fecha_inicio.errors?.required && (formCiclo.controls.fecha_inicio?.touched || submitted)" class="error">
+                            El fecha inicio es requerida
+                        </div>
+                    </div>
+                    <div class="input-field  col s12 m6 l6 xl6">
+                        <input id="fecha_fin" type="text" class="datepicker" formControlName="fecha_final" [(ngModel)]="ciclo.fecha_final">
+                        <label for="fecha_final">Fecha fin</label>
+                        <div *ngIf="formCiclo.controls.fecha_final.errors?.required && (formCiclo.controls.fecha_final?.touched || submitted)" class="error">
+                            El fecha fin es requerida
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col s12 m12 l12 xl12">
-                <div class="input-field col s12 m12 l12 xl12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Descripción</label>
-                </div>
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <div class="input-field col s12 m12 l12 xl12">
+                        <textarea id="textarea1" class="materialize-textarea" formControlName="observaciones" [(ngModel)]="ciclo.observaciones"></textarea>
+                        <label for="textarea1">Observaciones</label>
+                    </div>
 
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <button class="btn indigo darken-4 waves-effect waves-light right" type="submit" name="action">Crear
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn indigo darken-4 waves-effect waves-light right" type="submit" name="action">Crear
                       <i class="mdi-content-send right"></i>
                     </button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
