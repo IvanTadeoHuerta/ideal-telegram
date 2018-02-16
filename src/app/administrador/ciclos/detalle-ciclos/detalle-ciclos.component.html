@@ -14,14 +14,14 @@
                 <div class="col s12 m12 l12 xl12">
 
                     <div class="input-field  col s12 m6 l6 xl6">
-                        <input id="fecha_inicio" type="text" materialize="pickadate" formControlName="fecha_inicio" [(ngModel)]="ciclo.fecha_inicio">
+                        <input id="fecha_inicio" type="text" class="fecha_inicio" materialize="pickadate" formControlName="fecha_inicio" [(ngModel)]="ciclo.fecha_inicio" >
                         <label for="fecha_inicio">Fecha inicio</label>
                         <div *ngIf="formCiclo.controls.fecha_inicio.errors?.required && (formCiclo.controls.fecha_inicio?.touched || submitted)" class="error">
                             El fecha inicio es requerida
                         </div>
                     </div>
                     <div class="input-field  col s12 m6 l6 xl6">
-                        <input id="fecha_fin" type="text" class="datepicker" formControlName="fecha_final" [(ngModel)]="ciclo.fecha_final">
+                        <input id="fecha_fin" type="text" class="fecha_final" materialize="pickadate"  formControlName="fecha_final" [(ngModel)]="ciclo.fecha_final">
                         <label for="fecha_final">Fecha fin</label>
                         <div *ngIf="formCiclo.controls.fecha_final.errors?.required && (formCiclo.controls.fecha_final?.touched || submitted)" class="error">
                             El fecha fin es requerida

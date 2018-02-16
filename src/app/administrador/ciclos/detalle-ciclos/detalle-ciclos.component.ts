@@ -27,14 +27,15 @@ export class DetalleCiclosComponent implements OnInit {
       observaciones: new FormControl(this.ciclo.observaciones, [])
     });
 
-    $('.datepicker').pickadate({
+    $('.fecha_inicio, .fecha_final').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
   }
 
   enviarFormulario(model: Ciclo) {
-    model.fecha_inicio =  $('.datepicker').pickadate('picker').get('highlight', 'yyyy');
+    model.fecha_final =  $('.fecha_final').pickadate('picker').get();
+    model.fecha_inicio =  $('.fecha_inicio').pickadate('picker').get();
     console.log('Datos del ciclo: ',model)
     this.submitted = true;
     if(!this.formCiclo.valid){
